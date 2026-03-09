@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consultoria Forster Fitness para Incorporadoras | Forster</title>
+  <meta name="description" content="Projetamos áreas fitness que elevam o padrão do produto imobiliário. Consultoria para incorporadoras e construtoras com estratégia, layout 3D e curadoria técnica." />
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --panel:#0f1217;
+      --panel-2:#0c0f14;
+      --text:#e9edf5;
+      --muted:#b7c0d4;
+      --line:rgba(255,255,255,.08);
+      --accent:#ff2d2d;
+      --accent-2:#ff4a4a;
+      --ok:#22c55e;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1120px;
+      --h1: clamp(28px, 4.2vw, 52px);
+      --h2: clamp(20px, 2.6vw, 32px);
+      --h3: clamp(16px, 1.8vw, 18px);
+      --p: 16px;
+    }
+
+    *{box-sizing:border-box}
+    html{min-height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      position:relative;
+      isolation:isolate;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(255,45,45,.12), transparent 55%),
+        radial-gradient(900px 500px at 80% 10%, rgba(255,45,45,.08), transparent 50%),
+        radial-gradient(1200px 800px at 50% 120%, rgba(255,255,255,.04), transparent 55%),
+        linear-gradient(180deg, #07090c 0%, #0b0d10 100%);
+      line-height:1.45;
+    }
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:url("https://www.transparenttextures.com/patterns/3px-tile.png") repeat;
+      opacity:.30;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px;}
+
+    /* ── TOPBAR ── */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,16,.62);
+      border-bottom:1px solid var(--line);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.2px;
+      min-width:0;
+    }
+    .brand-text{
+      font-size:13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:150px;
+    }
+    .logo-img{
+      height:76px;
+      width:auto;
+      border-radius:6px;
+      object-fit:contain;
+      flex:0 0 auto;
+      display:block;
+    }
+
+    /* Hamburger toggle — visível apenas no mobile */
+    .nav-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:38px; height:38px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:10px;
+      cursor:pointer;
+      color:var(--text);
+      font-size:20px;
+      line-height:1;
+      padding:0;
+      flex-shrink:0;
+    }
+    .nav-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+    /* Nav: coluna fixa no mobile, linha no desktop */
+    .nav{
+      display:none;
+      flex-direction:column;
+      position:fixed;
+      top:63px; left:0; right:0;
+      background:rgba(11,13,16,.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+      padding:10px 20px 16px;
+      gap:2px;
+      z-index:49;
+    }
+    .nav.open{display:flex;}
+    .nav a{
+      text-decoration:none;
+      font-size:15px;
+      color:var(--muted);
+      padding:11px 12px;
+      border-radius:10px;
+    }
+    .nav a:hover{background:rgba(255,255,255,.04); color:var(--text);}
+
+    /* CTA no topbar: escondido no mobile (hero já tem o CTA) */
+    .topbar-cta{display:none;}
+
+    /* ── DESKTOP NAV ── */
+    @media (min-width:768px){
+      .brand-text{font-size:inherit; max-width:none;}
+      .nav-toggle{display:none;}
+      .nav{
+        display:flex;
+        flex-direction:row;
+        position:static;
+        background:none;
+        backdrop-filter:none;
+        border:none;
+        padding:0;
+        gap:14px;
+        flex-wrap:wrap;
+        align-items:center;
+      }
+      .nav a{font-size:14px; padding:8px 10px;}
+      .topbar-cta{display:inline-flex;}
+    }
+
+    /* ── BUTTONS ── */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.16);}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: rgba(255,45,45,.45);
+      box-shadow: 0 18px 40px rgba(255,45,45,.20);
+    }
+    .btn.primary:hover{box-shadow: 0 22px 55px rgba(255,45,45,.25);}
+    .btn.ghost{background: transparent;}
+
+    /* ── HERO ── */
+    .hero{padding:24px 0 18px;}
+    @media (min-width:640px){.hero{padding:44px 0 24px;}}
+    @media (min-width:980px){.hero{padding:56px 0 26px;}}
+
+    /* Grid hero: 1 coluna → 2 colunas */
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (min-width:980px){
+      .heroGrid{grid-template-columns:1.15fr .85fr; gap:22px;}
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    @media (min-width:640px){.heroMain{padding:22px;}}
+    @media (min-width:980px){.heroMain{padding:28px;}}
+    .heroMain:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(800px 320px at 15% 10%, rgba(255,45,45,.20), transparent 50%),
+        radial-gradient(600px 220px at 70% 0%, rgba(255,255,255,.06), transparent 55%);
+      pointer-events:none;
+      opacity:.95;
+    }
+    .heroMain > *{position:relative}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:12px;
+    }
+    @media (min-width:640px){.kicker{font-size:13px;}}
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255,45,45,.12);
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:var(--h1);
+      line-height:1.08;
+      letter-spacing:-.5px;
+    }
+    .lead{
+      margin:0 0 18px;
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 64ch;
+    }
+    .heroCtas{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin: 18px 0 12px;
+    }
+    /* Botões full-width em telas muito pequenas */
+    @media (max-width:479px){
+      .heroCtas{flex-direction:column;}
+      .heroCtas .btn{width:100%; justify-content:center;}
+    }
+    .trustRow{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+
+    .heroSide{padding:14px;}
+    @media (min-width:640px){.heroSide{padding:18px;}}
+    @media (min-width:980px){.heroSide{padding:22px;}}
+
+    .mediaBox{
+      border-radius: var(--radius-sm);
+      border:1px dashed rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      padding:14px;
+      height: 100%;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .mediaThumb{
+      min-height:160px;
+      flex:1;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(480px 220px at 30% 20%, rgba(255,45,45,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      color: rgba(233,237,245,.78);
+      padding:18px;
+    }
+    .mediaNote{
+      font-size: 13px;
+      color: var(--muted);
+      line-height:1.4;
+    }
+
+    /* ── SECTIONS ── */
+    section{padding:16px 0;}
+    @media (min-width:640px){section{padding:18px 0;}}
+
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px;
+      margin-bottom: 12px;
+    }
+    h2{
+      margin:0;
+      font-size: var(--h2);
+      letter-spacing:-.4px;
+      line-height:1.15;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 70ch;
+    }
+
+    /* ── GRIDS — mobile-first ── */
+    .grid2{display:grid; grid-template-columns:1fr; gap:16px;}
+    @media (min-width:860px){.grid2{grid-template-columns:1fr 1fr;}}
+
+    /* grid3: 1 col → 2 col (tablet) → 3 col (desktop) */
+    .grid3{display:grid; grid-template-columns:1fr; gap:16px;}
+    @media (min-width:600px){.grid3{grid-template-columns:repeat(2,1fr);}}
+    @media (min-width:980px){.grid3{grid-template-columns:repeat(3,1fr);}}
+
+    .compare{display:grid; grid-template-columns:1fr; gap:16px;}
+    @media (min-width:860px){.compare{grid-template-columns:1fr 1fr;}}
+
+    /* ── PANELS ── */
+    .panel{
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    @media (min-width:640px){.panel{padding:18px;}}
+    .panel h3{
+      margin:0 0 8px;
+      font-size: var(--h3);
+      letter-spacing:-.2px;
+    }
+    .panel p{margin:0; color: var(--muted); font-size: var(--p);}
+    ul{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{margin:6px 0;}
+
+    .compare .panel{background: rgba(255,255,255,.02);}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size: 12px;
+      color: var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:6px 10px;
+      margin-bottom:10px;
+      width:fit-content;
+    }
+    .badge strong{color:var(--text); font-weight:700;}
+
+    /* ── QUOTE ── */
+    .quote{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,45,45,.25);
+      background: radial-gradient(700px 240px at 20% 0%, rgba(255,45,45,.16), rgba(255,255,255,.02) 60%);
+    }
+    @media (min-width:640px){.quote{padding:18px;}}
+    .quote p{margin:0 0 10px; font-size: 16px; color: rgba(233,237,245,.92);}
+    .quote .who{margin:0; color: var(--muted); font-size: 13px;}
+
+    /* ── CTA BOX — mobile-first ── */
+    .ctaBox{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,45,45,.35);
+      background:
+        radial-gradient(900px 320px at 15% 10%, rgba(255,45,45,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: 0 24px 70px rgba(255,45,45,.12);
+      display:grid;
+      grid-template-columns:1fr;
+      gap: 16px;
+      align-items:center;
+    }
+    @media (min-width:640px){.ctaBox{padding:22px;}}
+    @media (min-width:980px){.ctaBox{grid-template-columns:1.15fr .85fr; padding:24px;}}
+    .ctaBox h2{margin-bottom:8px;}
+    .price{
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 800;
+      letter-spacing:-.4px;
+      margin: 6px 0 8px;
+    }
+    .fine{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .ctaRight{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,13,16,.35);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    @media (min-width:640px){.ctaRight{padding:16px;}}
+    .ctaRight .row{
+      display:flex; align-items:flex-start; gap:10px;
+      margin:10px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(34,197,94,.14);
+      border:1px solid rgba(34,197,94,.35);
+      display:inline-flex; align-items:center; justify-content:center;
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+    .check:before{
+      content:"";
+      width:8px; height:8px;
+      border-right:2px solid var(--ok);
+      border-bottom:2px solid var(--ok);
+      transform: rotate(45deg);
+      margin-top:-1px;
+    }
+
+    /* ── FOOTER ── */
+    .footer{
+      padding:28px 0;
+      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+      color: var(--muted);
+      border-top:1px solid var(--line);
+      margin-top: 18px;
+    }
+    @media (min-width:640px){
+      .footer{padding-bottom: calc(50px + env(safe-area-inset-bottom));}
+    }
+    .footGrid{display:grid; grid-template-columns:1fr; gap:16px;}
+    @media (min-width:860px){.footGrid{grid-template-columns:1fr 1fr;}}
+
+    .smallLinks a{
+      color: var(--muted);
+      text-decoration:none;
+      margin-right: 12px;
+    }
+    .smallLinks a:hover{color: var(--text);}
+    @media (min-width:860px){.smallLinks{text-align:right;}}
+    .note{
+      font-size: 12px;
+      color: rgba(183,192,212,.85);
+    }
+    .anchor{scroll-margin-top: 92px;}
+    .panel-icon{display:block;width:34px;height:34px;margin-bottom:12px;color:var(--accent);flex-shrink:0;}
+  </style>
+
+  <!-- ══ TRACKING ═══════════════════════════════════════════════════════════ -->
+  <!-- Google Analytics 4 — SUBSTITUA G-XXXXXXXXXX pelo seu Measurement ID   -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Meta Pixel — SUBSTITUA PIXEL_ID pelo ID do seu Gerenciador de Anúncios -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','PIXEL_ID');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#top">
+          <img src="../forster_consultoria_logo.png" class="logo-img" alt="Forster Consultoria">
+          <span class="brand-text">Consultoria Forster Fitness | Incorporadoras</span>
+        </a>
+
+        <!-- Hamburger: visível apenas no mobile -->
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+
+        <nav class="nav" id="main-nav" aria-label="Navegação">
+          <a href="#problema">Problema</a>
+          <a href="#diferenca">O que muda</a>
+          <a href="#metodo">Como funciona</a>
+          <a href="#sessao">Sessão estratégica</a>
+          <a href="#consultoria">Consultoria completa</a>
+        </nav>
+
+        <!-- Substitua o href pelo seu link real (WhatsApp / Calendly / Kommo) -->
+        <a class="btn primary topbar-cta" href="#sessao">Agendar Sessão</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div class="heroGrid">
+          <div class="card heroMain">
+            <div class="kicker"><span class="dot" aria-hidden="true"></span> Consultoria para incorporadoras, construtoras e projetos verticais</div>
+
+            <h1>Transforme a área fitness em um diferencial real do seu empreendimento.</h1>
+            <p class="lead">
+              Projetamos academias que elevam o padrão do produto imobiliário, integram arquitetura, uso real e posicionamento de mercado — antes da obra virar custo irreversível.
+            </p>
+
+            <div class="trustRow">
+              <span class="pill">Estratégia + Layout 3D</span>
+              <span class="pill">Curadoria técnica coerente</span>
+              <span class="pill">Integração com arquitetura</span>
+            </div>
+
+            <div class="heroCtas">
+              <!-- Substitua pelo seu link real -->
+              <a class="btn primary" href="#sessao">Agendar Sessão Estratégica do Projeto</a>
+              <a class="btn ghost" href="#metodo">Ver como funciona</a>
+            </div>
+
+            <p class="note" style="margin:14px 0 0;">
+              Atuamos para proteger o valor do produto imobiliário e evitar retrabalho.
+            </p>
+          </div>
+
+          <aside class="card heroSide">
+            <div class="mediaBox">
+              <div class="mediaThumb">
+                <div>
+                  <strong>Área de mídia (placeholder)</strong><br />
+                  Inserir aqui vídeo curto (30–60s) ou carrossel com<br />
+                  projetos / renders / antes e depois.
+                </div>
+              </div>
+              <p class="mediaNote">
+                Dica: um vídeo simples com 3 pontos funciona muito bem: (1) por que área fitness vira "genérica", (2) o que muda com estratégia, (3) convite para sessão estratégica.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROBLEMA -->
+      <section id="problema" class="anchor">
+        <div class="sectionTitle">
+          <h2>A maioria das áreas fitness nasce genérica</h2>
+        </div>
+        <p class="subtitle">
+          Não por falta de investimento — mas por falta de estratégia. O resultado é um espaço que custa, mas não agrega valor percebido.
+        </p>
+
+        <div class="grid3" style="margin-top:14px;">
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+            <h3>Desalinhamento com arquitetura</h3>
+            <p>Espaços desconectados do conceito do empreendimento e do fluxo real de uso.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h7.5M8.25 9.75h7.5m-7.5 3h7.5m-7.5 3h4.5m-8.25 3h13.5A2.25 2.25 0 0 0 21.75 18V6A2.25 2.25 0 0 0 19.5 3.75H4.5A2.25 2.25 0 0 0 2.25 6v12A2.25 2.25 0 0 0 4.5 20.25Z"/></svg>
+            <h3>Decisão por catálogo</h3>
+            <p>Equipamentos escolhidos por "lista padrão" ou fornecedor, sem coerência de produto.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+            <h3>Retrabalho e ruído</h3>
+            <p>Alinhamentos refeitos ao longo da obra por falta de direção estratégica desde o início.</p>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:16px;">
+          <h3>O que vemos com frequência em lançamentos</h3>
+          <ul>
+            <li>Áreas fitness desconectadas do padrão do empreendimento</li>
+            <li>Padronização genérica (mais "memorial" do que diferencial)</li>
+            <li>Falta de coerência entre m², layout e proposta de uso</li>
+            <li>Perda de oportunidade de narrativa comercial (valor percebido)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- O QUE MUDA -->
+      <section id="diferenca" class="anchor">
+        <div class="sectionTitle">
+          <h2>Quando a área fitness é pensada como produto, não como item</h2>
+        </div>
+        <p class="subtitle">
+          A diferença aparece no conceito, no m² bem usado, na coerência técnica e na percepção de valor no lançamento.
+        </p>
+
+        <div class="compare" style="margin-top:14px;">
+          <div class="panel">
+            <svg class="panel-icon" style="color:#ef4444" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="badge"><strong>SEM CONSULTORIA</strong></div>
+            <ul>
+              <li>Área tratada como obrigação</li>
+              <li>Decisões fragmentadas</li>
+              <li>Padronização genérica</li>
+              <li>Risco de retrabalho e desalinhamento</li>
+              <li>Baixa percepção de valor na venda</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" style="color:#22c55e" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="badge"><strong>COM CONSULTORIA</strong></div>
+            <ul>
+              <li>Área integrada ao conceito do empreendimento</li>
+              <li>Estratégia alinhada ao público-alvo e ticket</li>
+              <li>Uso inteligente do m² disponível</li>
+              <li>Curadoria técnica e estética coerente</li>
+              <li>Diferencial real na comunicação do produto</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVA -->
+      <section id="prova" class="anchor">
+        <div class="sectionTitle">
+          <h2>Projetos reais, decisões estratégicas e impacto no produto final</h2>
+        </div>
+        <p class="subtitle">
+          Aqui entram imagens/vídeos de cases. A prova deve mostrar resultado e coerência — não detalhes do método.
+        </p>
+
+        <div class="grid2" style="margin-top:14px;">
+          <div class="quote">
+            <p>"A consultoria ajudou a posicionar melhor o produto e evitou decisões que custariam caro na obra."</p>
+            <p class="who">— Gestor de Produto, Incorporadora</p>
+          </div>
+          <div class="quote">
+            <p>"A área fitness passou a fazer parte do discurso comercial do empreendimento."</p>
+            <p class="who">— Coordenação de Projetos</p>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:16px;">
+          <h3>Área de Cases (placeholder)</h3>
+          <p>
+            Substitua este bloco por um grid de imagens (renders + fotos) ou um carrossel. Ideal: 3 cases (pequeno/médio/grande) com legendas curtas:
+            "Contexto → Direção → Resultado".
+          </p>
+        </div>
+      </section>
+
+      <!-- QUEM SOMOS -->
+      <section id="autoridade" class="anchor">
+        <div class="sectionTitle">
+          <h2>Um time técnico que entende produto imobiliário</h2>
+        </div>
+        <p class="subtitle">
+          Atuamos antes da compra de qualquer equipamento para proteger o valor do empreendimento e evitar decisões desalinhadas ao longo da obra.
+        </p>
+
+        <div class="grid2" style="margin-top:14px;">
+          <div class="panel">
+            <h3>O que fazemos</h3>
+            <ul>
+              <li>Estratégia da área fitness alinhada ao padrão do empreendimento</li>
+              <li>Dimensionamento e layout com visão técnica e de produto</li>
+              <li>Curadoria coerente (técnica + uso + estética)</li>
+              <li>Orientação para implantação, reduzindo ruído entre parceiros</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>O que NÃO fazemos</h3>
+            <ul>
+              <li>Orçamento "rápido" de equipamento</li>
+              <li>Venda empurrada por catálogo</li>
+              <li>Decisão sem contexto de público-alvo e m²</li>
+              <li>Projetos genéricos que não agregam valor percebido</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- MÉTODO -->
+      <section id="metodo" class="anchor">
+        <div class="sectionTitle">
+          <h2>Como a consultoria funciona</h2>
+        </div>
+        <p class="subtitle">
+          Um processo compatível com fluxo de obra e projeto — clareza na direção e coerência no resultado.
+        </p>
+
+        <div class="grid3" style="margin-top:14px;">
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+            <h3>1) Análise do empreendimento</h3>
+            <p>Entendimento do padrão, público-alvo, posicionamento e proposta do projeto.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+            <h3>2) Estratégia da área fitness</h3>
+            <p>Definimos o papel do espaço dentro do produto imobiliário (e o nível de investimento adequado).</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+            <h3>3) Layout e projeto (3D)</h3>
+            <p>Projeto técnico integrado à arquitetura e engenharia antes de decisões irreversíveis.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.585l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z"/></svg>
+            <h3>4) Curadoria técnica</h3>
+            <p>Especificação coerente, evitando excessos, lacunas e escolhas desalinhadas ao conceito.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+            <h3>5) Orientação para implantação</h3>
+            <p>Acompanhamento estratégico para reduzir retrabalho e ruído entre fornecedores e stakeholders.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <h3>Entrega com clareza</h3>
+            <p>Documentação organizada e material visual para tomada de decisão com segurança.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SESSÃO ESTRATÉGICA -->
+      <section id="sessao" class="anchor">
+        <div class="ctaBox">
+          <div>
+            <h2>Sessão Estratégica do Projeto</h2>
+            <p class="subtitle" style="margin-top:6px;">
+              Avalie a viabilidade e o posicionamento da área fitness do seu empreendimento — com direcionamento técnico e estratégico.
+            </p>
+
+            <div class="price">R$ 99,00</div>
+            <p class="fine">Abatível do valor da consultoria completa em caso de contratação.</p>
+
+            <div class="heroCtas" style="margin-top:14px;">
+              <!-- Substitua pelo seu link real -->
+              <a class="btn primary" href="https://example.com/agendar" target="_blank" rel="noopener">Agendar Sessão Estratégica</a>
+              <a class="btn" href="#consultoria">Ver consultoria completa</a>
+            </div>
+
+            <p class="note" style="margin-top:10px;">
+              Indicado para projetos em estudo, pré-obra, revisões de conceito e empreendimentos em lançamento.
+            </p>
+          </div>
+
+          <div class="ctaRight" aria-label="O que acontece na sessão">
+            <div class="row"><span class="check" aria-hidden="true"></span><span>Análise inicial do projeto e do padrão do empreendimento</span></div>
+            <div class="row"><span class="check" aria-hidden="true"></span><span>Identificação de riscos e oportunidades (m², coerência e uso)</span></div>
+            <div class="row"><span class="check" aria-hidden="true"></span><span>Direção estratégica e próximos passos recomendados</span></div>
+            <div class="row"><span class="check" aria-hidden="true"></span><span>Clareza sobre nível de investimento adequado ao produto</span></div>
+
+            <p class="note" style="margin:12px 0 0;">
+              Não é orçamento e não é venda de equipamento. É diagnóstico estratégico para decisão segura.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONSULTORIA COMPLETA -->
+      <section id="consultoria" class="anchor">
+        <div class="sectionTitle">
+          <h2>Consultoria completa</h2>
+        </div>
+        <p class="subtitle">
+          Para projetos que exigem precisão, coerência e valor agregado — quando o erro vira custo irreversível.
+        </p>
+
+        <div class="grid2" style="margin-top:14px;">
+          <div class="panel">
+            <h3>Indicada quando</h3>
+            <ul>
+              <li>O empreendimento possui padrão médio ou alto</li>
+              <li>A área fitness faz parte do posicionamento do produto</li>
+              <li>Decisões precisam ser alinhadas entre times e parceiros</li>
+              <li>Erros não podem ser corrigidos depois</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Inclui</h3>
+            <ul>
+              <li>Estratégia da área fitness</li>
+              <li>Projeto e layout 3D</li>
+              <li>Curadoria técnica de equipamentos</li>
+              <li>Orientação para implantação</li>
+            </ul>
+
+            <div class="price" style="margin-top:12px; font-size:clamp(18px,3vw,24px);">A partir de R$ 3.500,00</div>
+            <p class="fine">Escopo ajustado conforme complexidade do projeto.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTADO -->
+      <section id="resultado" class="anchor">
+        <div class="sectionTitle">
+          <h2>O que a incorporadora ganha</h2>
+        </div>
+        <div class="grid3" style="margin-top:14px;">
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+            <h3>Coerência de produto</h3>
+            <p>Área fitness alinhada ao conceito, padrão e público-alvo do empreendimento.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" style="color:#22c55e" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+            <h3>Menos retrabalho</h3>
+            <p>Redução de ruído e alinhamentos refeitos entre stakeholders e fornecedores.</p>
+          </div>
+          <div class="panel">
+            <svg class="panel-icon" style="color:#f59e0b" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+            <h3>Valor percebido</h3>
+            <p>Diferencial competitivo com impacto direto na narrativa comercial do lançamento.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA FINAL -->
+      <section id="cta-final" class="anchor" style="padding-bottom: 28px;">
+        <div class="ctaBox" style="grid-template-columns:1fr;">
+          <div>
+            <h2>A área fitness pode ser um diferencial — ou apenas um custo.</h2>
+            <p class="subtitle" style="margin-top:8px;">
+              A decisão acontece no projeto. Comece pela Sessão Estratégica e alinhe direção, coerência e investimento.
+            </p>
+            <div class="heroCtas" style="margin-top:14px;">
+              <!-- Substitua pelo seu link real -->
+              <a class="btn primary" href="https://example.com/agendar" target="_blank" rel="noopener">Agendar Sessão Estratégica</a>
+              <a class="btn" href="#prova">Ver prova e cases</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footGrid">
+          <div>
+            <strong style="color:var(--text);">Consultoria Fitness | Incorporadoras</strong>
+            <p class="note" style="margin:8px 0 0;">
+              Este template é um HTML estático. Substitua links, depoimentos e mídias pelos ativos reais (cases, vídeo, imagens).
+            </p>
+          </div>
+
+          <div class="smallLinks">
+            <a href="#top">Topo</a>
+            <a href="#sessao">Sessão</a>
+            <a href="#consultoria">Consultoria</a>
+            <a href="#metodo">Método</a>
+            <div class="note" style="margin-top:10px;">
+              © <span id="year"></span> • Todos os direitos reservados Forster Fitness Reviews
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Ano automático no rodapé
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Hamburger menu toggle
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.getElementById("main-nav");
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen);
+      toggle.textContent = isOpen ? "\u2715" : "\u2630";
+    });
+    // Fecha o menu ao clicar num link
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "\u2630";
+      });
+    });
+
+    // Rastreamento de cliques nos CTAs
+    document.querySelectorAll('.btn.primary, .btn-primary').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(typeof gtag !== 'undefined') gtag('event','generate_lead',{event_category:'CTA',event_label:btn.textContent.trim()});
+        if(typeof fbq !== 'undefined') fbq('track','Lead');
+      });
+    });
+  </script>
+</body>
+</html>

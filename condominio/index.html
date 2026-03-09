@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Consultoria para Academias de Condomínio | Forster</title>
+  <meta name="description" content="Planejamento e projeto de academias para condomínios. Evite erros de compra, desperdício de espaço e problemas em assembleia.">
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --bg-soft:#111418;
+      --panel:#131820;
+      --text:#e9edf5;
+      --muted:#b7c0d4;
+      --accent:#ff2d2d;
+      --accent-2:#ff4a4a;
+      --line:rgba(255,255,255,.08);
+      --radius:18px;
+      --radius-sm:12px;
+      --max:1120px;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      position:relative;
+      isolation:isolate;
+      background:
+        radial-gradient(800px 400px at 20% 0%, rgba(255,45,45,.12), transparent 50%),
+        radial-gradient(900px 500px at 100% 20%, rgba(255,255,255,.04), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:url("https://www.transparenttextures.com/patterns/3px-tile.png") repeat;
+      opacity:.30;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 16px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(11,13,16,.82);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar-inner{
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+
+    .logo-img{
+      height:76px;
+      width:auto;
+      border-radius:6px;
+      object-fit:contain;
+      flex:0 0 auto;
+      display:block;
+    }
+
+    .nav{
+      display:none;
+      gap:10px;
+      align-items:center;
+    }
+
+    .nav a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    .section{
+      padding:44px 0;
+    }
+
+    .hero{
+      padding:36px 0 22px;
+    }
+
+    .hero-grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-main{
+      padding:22px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(500px 180px at 10% 0%, rgba(255,45,45,.18), transparent 55%),
+        radial-gradient(500px 200px at 100% 0%, rgba(255,255,255,.04), transparent 50%);
+      pointer-events:none;
+    }
+
+    .hero-main > *{
+      position:relative;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:14px;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 5px rgba(255,45,45,.12);
+    }
+
+    h1,h2,h3{
+      margin:0;
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+
+    h1{
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    h3{
+      font-size:18px;
+      margin-bottom:8px;
+    }
+
+    p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .lead{
+      font-size:17px;
+      max-width:42ch;
+    }
+
+    .hero-cta-group,
+    .cta-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px 16px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:15px;
+      border:1px solid rgba(255,255,255,.1);
+      transition:.15s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff;
+      box-shadow:0 16px 36px rgba(255,45,45,.2);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    .trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .hero-side{
+      padding:18px;
+    }
+
+    .media-box{
+      border:1px dashed rgba(255,255,255,.15);
+      border-radius:var(--radius-sm);
+      padding:12px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .media-thumb{
+      min-height:220px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(450px 180px at 20% 20%, rgba(255,45,45,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:18px;
+      color:rgba(233,237,245,.82);
+      font-size:14px;
+    }
+
+    .media-note{
+      margin-top:10px;
+      font-size:13px;
+    }
+
+    .section-head{
+      margin-bottom:18px;
+    }
+
+    .grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .panel{
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    li{
+      margin:6px 0;
+    }
+
+    .quote{
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,45,45,.22);
+      background:
+        radial-gradient(500px 180px at 20% 0%, rgba(255,45,45,.15), transparent 60%),
+        rgba(255,255,255,.02);
+    }
+
+    .quote p:first-child{
+      color:var(--text);
+      margin-bottom:10px;
+      font-size:15px;
+    }
+
+    .quote .who{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .cta-box{
+      padding:22px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,45,45,.28);
+      background:
+        radial-gradient(700px 260px at 15% 10%, rgba(255,45,45,.2), transparent 55%),
+        linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      box-shadow:0 22px 60px rgba(255,45,45,.12);
+    }
+
+    .price{
+      margin-top:14px;
+      font-size:30px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:-.03em;
+    }
+
+    .fine{
+      margin-top:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .checklist{
+      margin-top:16px;
+      display:grid;
+      gap:10px;
+    }
+
+    .check-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .check{
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      flex:0 0 auto;
+      margin-top:2px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      position:relative;
+    }
+
+    .check::before{
+      content:"";
+      position:absolute;
+      left:5px;
+      top:2px;
+      width:5px;
+      height:9px;
+      border-right:2px solid #22c55e;
+      border-bottom:2px solid #22c55e;
+      transform:rotate(45deg);
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 42px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:grid;
+      gap:12px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .footer-links a{
+      color:var(--muted);
+    }
+
+    .footer-links a:hover{
+      color:var(--text);
+    }
+
+    /* tablet */
+    @media (min-width: 768px){
+      .wrap{
+        padding:0 24px;
+      }
+
+      .section{
+        padding:64px 0;
+      }
+
+      .hero{
+        padding:48px 0 26px;
+      }
+
+      h1{
+        font-size:46px;
+      }
+
+      h2{
+        font-size:34px;
+      }
+
+      .hero-cta-group,
+      .cta-actions{
+        flex-direction:row;
+      }
+
+      .btn{
+        width:auto;
+      }
+
+      .grid-2{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .grid-3{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr auto;
+        align-items:end;
+      }
+    }
+
+    /* desktop */
+    @media (min-width: 1024px){
+      .nav{
+        display:flex;
+      }
+
+      .hero-grid{
+        grid-template-columns:1.15fr .85fr;
+        align-items:stretch;
+      }
+
+      .hero-main{
+        padding:30px;
+      }
+
+      .hero-side{
+        padding:22px;
+      }
+
+      .grid-3{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      h1{
+        font-size:56px;
+      }
+
+      h2{
+        font-size:38px;
+      }
+    }
+    .panel-icon{display:block;width:34px;height:34px;margin-bottom:12px;color:var(--accent);flex-shrink:0;}
+  </style>
+
+  <!-- ══ TRACKING ═══════════════════════════════════════════════════════════ -->
+  <!-- Google Analytics 4 — SUBSTITUA G-XXXXXXXXXX pelo seu Measurement ID   -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Meta Pixel — SUBSTITUA PIXEL_ID pelo ID do seu Gerenciador de Anúncios -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','PIXEL_ID');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <a class="brand" href="#top">
+          <img src="../forster_consultoria_logo.png" class="logo-img" alt="Forster Consultoria">
+          <span>Consultoria para Condomínios</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="#problema">Problema</a>
+          <a href="#solucao">Solução</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#diagnostico">Diagnóstico</a>
+          <a href="#consultoria">Consultoria</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="card hero-main">
+            <div class="kicker">
+              <span class="dot" aria-hidden="true"></span>
+              Planejamento técnico para academias de condomínio
+            </div>
+
+            <h1>Evite erros caros na academia do seu condomínio.</h1>
+
+            <p class="lead">
+              Planejamos academias que realmente funcionam para os moradores, evitando compras erradas, desperdício de espaço e problemas em assembleia.
+            </p>
+
+            <div class="trust-row">
+              <span class="pill">Projeto com critério técnico</span>
+              <span class="pill">Melhor uso do espaço</span>
+              <span class="pill">Mais segurança na decisão</span>
+            </div>
+
+            <div class="hero-cta-group">
+              <a class="btn btn-primary" href="#diagnostico">Agendar Sessão de Diagnóstico</a>
+              <a class="btn btn-secondary" href="#como-funciona">Ver como funciona</a>
+            </div>
+          </div>
+
+          <aside class="card hero-side">
+            <div class="media-box">
+              <div class="media-thumb">
+                <div>
+                  <strong>Área de mídia</strong><br>
+                  Insira aqui um vídeo curto, case<br>
+                  ou antes/depois da academia.
+                </div>
+              </div>
+              <p class="media-note">
+                Em mobile, um vídeo curto no topo ajuda muito a explicar rapidamente por que consultoria não é “só orçamento”.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problema">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A maioria das academias de condomínio nasce com erros</h2>
+          <p>Não por falta de investimento — mas por falta de planejamento técnico.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+            <h3>Compra de equipamentos errados</h3>
+            <p>Equipamentos escolhidos por catálogo ou pressão comercial, sem considerar o perfil real dos moradores.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/></svg>
+            <h3>Espaço mal aproveitado</h3>
+            <p>Academias que parecem completas, mas na prática funcionam mal e limitam o uso.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
+            <h3>Dificuldade para justificar investimento</h3>
+            <p>Falta de base técnica para defender o projeto e facilitar aprovação em assembleia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucao">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>O que muda quando o projeto é feito corretamente</h2>
+          <p>Quando a academia é pensada para uso real, o condomínio evita desperdício e entrega mais valor para os moradores.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <svg class="panel-icon" style="color:#ef4444" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <h3>Sem consultoria</h3>
+            <ul>
+              <li>Decisões baseadas em opinião</li>
+              <li>Compra isolada de equipamentos</li>
+              <li>Layout improvisado</li>
+              <li>Reclamações e retrabalho</li>
+              <li>Dificuldade de justificar escolhas</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" style="color:#22c55e" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <h3>Com consultoria</h3>
+            <ul>
+              <li>Projeto alinhado ao perfil do condomínio</li>
+              <li>Uso eficiente do espaço disponível</li>
+              <li>Equipamentos escolhidos com critério técnico</li>
+              <li>Mais clareza para aprovação</li>
+              <li>Academia com melhor percepção de valor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prova">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Projetos reais e decisões mais seguras</h2>
+          <p>O papel da consultoria é reduzir erro antes da compra e transformar a academia em um espaço realmente útil.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="quote">
+            <p>“Achávamos que era só escolher equipamentos. A consultoria mostrou que o espaço precisava ser pensado como um todo.”</p>
+            <p class="who">— Síndica, condomínio residencial</p>
+          </div>
+
+          <div class="quote">
+            <p>“Conseguimos defender melhor o investimento porque finalmente tínhamos um projeto com lógica e critério.”</p>
+            <p class="who">— Gestão condominial</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Como a consultoria funciona</h2>
+          <p>Um processo pensado para ajudar o condomínio a tomar decisões melhores antes de investir.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+            <h3>1) Diagnóstico do condomínio</h3>
+            <p>Entendemos perfil dos moradores, espaço disponível e contexto do projeto.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+            <h3>2) Estratégia e dimensionamento</h3>
+            <p>Definimos o que faz sentido tecnicamente e financeiramente para a academia.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+            <h3>3) Projeto e layout 3D</h3>
+            <p>Visualização clara do espaço antes de qualquer compra ou implantação.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.585l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z"/></svg>
+            <h3>4) Curadoria de equipamentos</h3>
+            <p>Escolhas alinhadas ao uso real, orçamento e manutenção futura.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+            <h3>5) Orientação para implantação</h3>
+            <p>Apoio estratégico para reduzir erros, retrabalho e ruído ao longo do processo.</p>
+          </div>
+
+          <div class="panel">
+            <svg class="panel-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+            <h3>Mais segurança na decisão</h3>
+            <p>O objetivo é evitar que o condomínio invista mal em algo difícil de corrigir depois.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="diagnostico">
+      <div class="wrap">
+        <div class="cta-box">
+          <h2>Sessão de Diagnóstico para o seu condomínio</h2>
+          <p>
+            Uma conversa com especialistas para entender o seu caso e orientar as decisões corretas antes de investir.
+          </p>
+
+          <div class="price">R$ 99,00</div>
+          <p class="fine">Abatível do valor da consultoria completa em caso de contratação.</p>
+
+          <div class="checklist">
+            <div class="check-item"><span class="check" aria-hidden="true"></span><span>Análise inicial do espaço e do cenário atual</span></div>
+            <div class="check-item"><span class="check" aria-hidden="true"></span><span>Principais erros a evitar</span></div>
+            <div class="check-item"><span class="check" aria-hidden="true"></span><span>Direcionamento técnico inicial</span></div>
+            <div class="check-item"><span class="check" aria-hidden="true"></span><span>Mais clareza sobre investimento adequado</span></div>
+          </div>
+
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="https://example.com/agendar" target="_blank" rel="noopener">Agendar Sessão de Diagnóstico</a>
+            <a class="btn btn-secondary" href="#consultoria">Ver consultoria completa</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="consultoria">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Consultoria completa para academias de condomínio</h2>
+          <p>Indicada quando há verba relevante em jogo e o condomínio precisa de clareza, segurança e critério técnico.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <h3>Quando faz sentido</h3>
+            <ul>
+              <li>O condomínio quer renovar ou montar a academia</li>
+              <li>Existe verba significativa envolvida</li>
+              <li>As decisões precisam ser aprovadas e justificadas</li>
+              <li>Erros não podem virar desperdício depois</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>O que está incluído</h3>
+            <ul>
+              <li>Projeto completo</li>
+              <li>Layout 3D</li>
+              <li>Curadoria de equipamentos</li>
+              <li>Orientação para implantação</li>
+            </ul>
+            <div class="price" style="font-size:24px;">A partir de R$ 1.490,00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-box">
+          <h2>A academia do condomínio pode ser um diferencial — ou um problema.</h2>
+          <p>A diferença está no projeto e na decisão tomada antes da compra.</p>
+
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="https://example.com/agendar" target="_blank" rel="noopener">Agendar Sessão de Diagnóstico</a>
+            <a class="btn btn-secondary" href="#top">Voltar ao topo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>
+            <strong style="color:var(--text);">Consultoria para Academias de Condomínio</strong><br>
+            Template mobile-first para síndicos e gestão condominial.
+          </div>
+
+          <div class="footer-links">
+            <a href="#problema">Problema</a>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#diagnostico">Diagnóstico</a>
+            <a href="#consultoria">Consultoria</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+
+<script>
+  // Rastreamento de cliques nos CTAs
+  document.querySelectorAll('.btn-primary, .btn.primary').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(typeof gtag !== 'undefined') gtag('event','generate_lead',{event_category:'CTA',event_label:btn.textContent.trim()});
+      if(typeof fbq !== 'undefined') fbq('track','Lead');
+    });
+  });
+</script>
+</body>
+</html>
